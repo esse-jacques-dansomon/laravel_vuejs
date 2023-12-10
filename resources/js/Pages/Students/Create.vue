@@ -1,15 +1,15 @@
 <template>
     <div>
         <h1>Students</h1>
-        <form @submit.prevent="submitForm">
+        <form  @submit.prevent="submitForm">
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name" v-model.trim="student.name">
+                <input type="text" id="name" v-model="student.name">
             </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" v-model.trim="student.email">
+                <input type="email" id="email" v-model="student.email">
             </div>
 
 
@@ -45,9 +45,25 @@
 
 <script setup>
 import { reactive } from 'vue'
+import { router, useForm } from '@inertiajs/vue3'
 
+//1er méthode
+// const student = reactive({
+//     name: '',
+//     email: '',
+//     sex: '',
+//     phone: '',
+//     birth_date: '',
+//     birth_city: ''
+// })
+//
+//
+// const submitForm = () => {
+//    router.post('/students', student)
+// }
 
-const student = reactive({
+//2ème méthode
+const student = useForm({
     name: '',
     email: '',
     sex: '',
@@ -57,12 +73,9 @@ const student = reactive({
 })
 
 const submitForm = () => {
-    //call student store
-    console.log(student)
-    alert('Form submitted')
-
-
+  return student.post('/students')
 }
+
 </script>
 
 <style scoped>

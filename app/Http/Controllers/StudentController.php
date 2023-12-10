@@ -13,7 +13,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        $students = Student::paginate(10);
         return inertia('Students/Index', compact('students'));
     }
 
@@ -30,7 +30,8 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-
+        Student::create($request->validated());
+       return redirect()->route('students.index');
     }
 
     /**
