@@ -8,7 +8,7 @@
         </a>
 
         <figcaption>
-            <div class="fig-author-figure-title">ID :</div>
+            <div class="fig-author-figure-title">ID : {{student.id}}</div>
             <div class="fig-author-figure-title">{{student.name}} , {{student.sex}} </div>
             <div class="fig-author-figure-title">{{student.email}} {{student.phone}}</div>
             <div class="fig-author-figure-title">{{student.birth_date}} &#8212; {{student.birth_city}} </div>
