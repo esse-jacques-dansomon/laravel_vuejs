@@ -1,9 +1,9 @@
 <template>
     <figure class="fir-image-figure" v-if="student.id">
-        <Link class="" rel="noopener" target="_blank"  :href="'/students/' + student.id + '/edit'">
-            <Link  :href="'/students/' + student.id + '/edit'">
+        <Link class="color-black" rel="noopener" target="_blank"  :href="route('students.edit', [student.id])">
+            <a >
                 <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
-            </Link>
+            </a>
             <div class="fir-imageover-color"></div>
             <img class="fir-imageover-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/twitter-logo.png" />
         </Link>
@@ -17,7 +17,7 @@
             <div class="fig-author-figure-title">{{student.email}} {{student.phone}}</div>
             <div class="fig-author-figure-title">{{student.birth_date}} &#8212; {{student.birth_city}} </div>
 
-                <Link :href="'/students/' + student.id " method="DELETE">
+                <Link :href="route('students.destroy', [student.id])" method="DELETE">
                    <Button class="fig-author-figure-title">
                     <i class="fas fa-trash-alt"></i> Delete
                     </Button>

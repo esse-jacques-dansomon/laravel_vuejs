@@ -1,6 +1,9 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import BaseLayout from "./Pages/layouts/BaseLayout.vue";
+import { ZiggyVue} from 'ziggy';
+import 'tailwindcss/tailwind.css';
+
 
 createInertiaApp({
     resolve: name => {
@@ -12,6 +15,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
+            .use(ZiggyVue)
             .mount(el)
     },
 })

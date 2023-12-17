@@ -2,15 +2,15 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <Link class="navbar-brand" href="/students">Crud Students</Link>
+            <Link class="navbar-brand" :href="route('students.index')">Crud Students</Link>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <Link class="nav-link" aria-current="page"
-                              href="/students"><i class="fas fa-home"></i> Home</Link>
+                              :href="route('students.index')"><i class="fas fa-home"></i> Students</Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" href="/students/create"><i class="fas fa-edit"></i> Create Student</Link>
+                        <Link class="nav-link" :href="route('students.create')"><i class="fas fa-edit"></i> Create Student</Link>
                     </li>
                 </ul>
             </div>
@@ -31,7 +31,9 @@ const page = usePage();
 let message = computed(() => page.props.flash.success);
 setTimeout(() => {
     if (message.value) {
-        message.value = '';
+        page.props.flash.success= null;
+        message = null;
+        console.log(message);
     }
 }, 1000);
 </script>

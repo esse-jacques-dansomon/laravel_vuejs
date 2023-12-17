@@ -79,7 +79,7 @@ const student = useForm({
 })
 
 const submitForm = () => {
-  return student.put(`/students${props.student.id}`)
+  return student.put(`/students/${props.student.id}`)
 }
 
 </script>
