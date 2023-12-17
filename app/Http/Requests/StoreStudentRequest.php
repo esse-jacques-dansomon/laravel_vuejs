@@ -21,18 +21,12 @@ class StoreStudentRequest extends FormRequest
      */
     public function rules(): array
     {
-//        $table->string('name', 100);
-//        $table->string('email', 150);
-//        $table->enum('sex', ['M', 'F'] );
-//        $table->string('sex')->nullable();
-//        $table->dateTime('birth_date')->nullable();
-//        $table->string('birth_city', 100)->nullable();
         return [
             "name" => ['required', 'string', 'max:100'],
-            "email" => [],
-            "sex" => [],
-            "birth_date" => [],
-            "birth_city" => [],
+            "email" => ['required', 'string', 'max:150', 'email:rfc,dns'],
+            "sex" => ['required',],
+            "birth_date" => ['required', 'date'],
+            "birth_city" => ['required', 'string', 'max:100'],
         ];
     }
 }

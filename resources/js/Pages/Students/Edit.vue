@@ -62,36 +62,24 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
 import { router, useForm } from '@inertiajs/vue3'
 
-//1er méthode
-// const student = reactive({
-//     name: '',
-//     email: '',
-//     sex: '',
-//     phone: '',
-//     birth_date: '',
-//     birth_city: ''
-// })
-//
-//
-// const submitForm = () => {
-//    router.post('/students', student)
-// }
+const props = defineProps({
+    student: Object
+})
 
 //2ème méthode
 const student = useForm({
-    name: '',
-    email: '',
-    sex: '',
-    phone: '',
-    birth_date: '',
-    birth_city: ''
+    name: props.student.name,
+    email: props.student.email,
+    sex: props.student.sex,
+    phone: props.student.phone,
+    birth_date: props.student.birth_date,
+    birth_city: props.student.birth_city,
 })
 
 const submitForm = () => {
-  return student.post('/students')
+  return student.put(`/students${props.student.id}`)
 }
 
 </script>

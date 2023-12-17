@@ -31,7 +31,8 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         Student::create($request->validated());
-       return redirect()->route('students.index');
+        return redirect()->route('students.index')
+            ->with('success', 'Student created.');
     }
 
     /**
@@ -47,7 +48,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return inertia('Students/Edit', compact('student'));
     }
 
     /**
@@ -55,7 +56,9 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        //
+        $student->update($request->validated());
+        return redirect()->route('students.index')
+            ->with('success', 'Student updated.');
     }
 
     /**
@@ -63,6 +66,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('students.index')
+            ->with('success', 'Student deleted.');
     }
 }

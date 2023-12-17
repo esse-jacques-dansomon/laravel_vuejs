@@ -1,23 +1,35 @@
 <template>
-    <figure class="fir-image-figure">
-
-        <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
-            <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+    <figure class="fir-image-figure" v-if="student.id">
+        <Link class="" rel="noopener" target="_blank"  :href="'/students/' + student.id + '/edit'">
+            <Link  :href="'/students/' + student.id + '/edit'">
+                <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+            </Link>
             <div class="fir-imageover-color"></div>
             <img class="fir-imageover-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/twitter-logo.png" />
-        </a>
+        </Link>
+
+
+
 
         <figcaption>
             <div class="fig-author-figure-title">ID : {{student.id}}</div>
             <div class="fig-author-figure-title">{{student.name}} , {{student.sex}} </div>
             <div class="fig-author-figure-title">{{student.email}} {{student.phone}}</div>
             <div class="fig-author-figure-title">{{student.birth_date}} &#8212; {{student.birth_city}} </div>
+
+                <Link :href="'/students/' + student.id " method="DELETE">
+                   <Button class="fig-author-figure-title">
+                    <i class="fas fa-trash-alt"></i> Delete
+                    </Button>
+
+                </Link>
         </figcaption>
     </figure>
 </template>
 
 <script setup>
 import { defineProps } from 'vue'
+import { Link } from '@inertiajs/vue3'
 
 const props = defineProps({
     student: Object
